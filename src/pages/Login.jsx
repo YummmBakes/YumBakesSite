@@ -27,7 +27,12 @@ const Login = () => {
         setError(result.message || 'Login failed');
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'An error occurred during login');
+      console.error('Login error:', err);
+      setError(
+        err.response?.data?.message ||
+        err.message ||
+        'An error occurred during login'
+      );
     } finally {
       setLoading(false);
     }
